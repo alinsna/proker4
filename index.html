@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Unplugged - SD Tirtosari</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #f0f7ff;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #0f172a, #1e3a5f);
+            color: #fff;
+            padding: 50px 20px 40px;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .header h1 i {
+            color: #facc15;
+            margin-right: 12px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: #facc15;
+            color: #0f172a;
+            padding: 6px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 16px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== NAVIGASI ===== */
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            background: #fff;
+            padding: 14px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            background: #1e3a5f;
+            color: #fff;
+        }
+
+        .nav a i {
+            margin-right: 6px;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 36px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            border-left: 6px solid #1e3a5f;
+            transition: 0.3s;
+        }
+
+        .section:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section h2 i {
+            color: #facc15;
+            font-size: 2rem;
+        }
+
+        .section h3 {
+            font-size: 1.3rem;
+            color: #1e3a5f;
+            margin: 24px 0 12px 0;
+        }
+
+        .section h3 i {
+            margin-right: 10px;
+            color: #facc15;
+        }
+
+        .section p {
+            margin-bottom: 14px;
+        }
+
+        .section ul, .section ol {
+            padding-left: 26px;
+            margin-bottom: 16px;
+        }
+
+        .section li {
+            margin-bottom: 6px;
+        }
+
+        /* ===== TABEL ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        table th {
+            background: #1e3a5f;
+            color: #fff;
+            padding: 12px 16px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        table tr:hover {
+            background: #e6f0fa;
+        }
+
+        /* ===== KARTU SIMBOL ===== */
+        .symbol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .symbol-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px 12px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: 0.3s;
+        }
+
+        .symbol-card:hover {
+            border-color: #1e3a5f;
+            transform: scale(1.02);
+        }
+
+        .symbol-card .simbol {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .symbol-card .warna {
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin: 6px 0;
+        }
+
+        .symbol-card .arti {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* ===== GRID MANFAAT ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .grid-2 .item {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 18px 16px;
+            border-left: 4px solid #facc15;
+            transition: 0.3s;
+        }
+
+        .grid-2 .item:hover {
+            background: #e6f0fa;
+            transform: translateY(-3px);
+        }
+
+        .grid-2 .item i {
+            font-size: 1.6rem;
+            margin-right: 10px;
+            color: #1e3a5f;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #f8fafc;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border-left: 5px solid #facc15;
+        }
+
+        .timeline-item .time {
+            font-weight: 700;
+            color: #1e3a5f;
+            min-width: 80px;
+            font-size: 0.9rem;
+        }
+
+        .timeline-item .desc {
+            font-size: 0.95rem;
+        }
+
+        /* ===== KOTAK HIGHLIGHT ===== */
+        .highlight {
+            background: #fef9e7;
+            border-radius: 16px;
+            padding: 20px 24px;
+            border-left: 6px solid #facc15;
+            margin: 16px 0;
+        }
+
+        .highlight i {
+            color: #facc15;
+            margin-right: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 20px 30px;
+            border-radius: 40px 40px 0 0;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+        }
+
+        .footer p {
+            font-size: 0.95rem;
+        }
+
+        .footer .social {
+            margin: 16px 0 0;
+            font-size: 1.6rem;
+            color: #facc15;
+        }
+
+        .footer .social i {
+            margin: 0 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .footer .social i:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 24px 18px;
+            }
+
+            .nav a {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .symbol-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .timeline-item .time {
+                min-width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            table th, table td {
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-robot"></i> Coding Unplugged</h1>
+            <p class="subtitle">Belajar Berpikir Komputasional <strong>Tanpa Komputer</strong></p>
+            <span class="badge"><i class="fas fa-school"></i> SD Tirtosari • 125 Anak</span>
+        </div>
+    </header>
+
+    <!-- ===== NAVIGASI ===== -->
+    <nav class="nav container">
+        <a href="#profil"><i class="fas fa-info-circle"></i> Profil</a>
+        <a href="#tujuan"><i class="fas fa-bullseye"></i> Tujuan</a>
+        <a href="#pertemuan"><i class="fas fa-calendar-alt"></i> Tahapan</a>
+        <a href="#materi"><i class="fas fa-book"></i> Materi</a>
+        <a href="#simbol"><i class="fas fa-arrows-alt"></i> Simbol</a>
+        <a href="#kegiatan"><i class="fas fa-play-circle"></i> Kegiatan</a>
+        <a href="#manfaat"><i class="fas fa-heart"></i> Manfaat</a>
+    </nav>
+
+    <!-- ===== KONTEN ===== -->
+    <div class="container">
+
+        <!-- ===== PROFIL ===== -->
+        <section class="section" id="profil">
+            <h2><i class="fas fa-robot"></i> Profil Program</h2>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Aspek</th><th>Detail</th></tr>
+                    <tr><td><strong>Nama Program</strong></td><td>Coding Unplugged: Belajar Berpikir Komputasional Tanpa Komputer</td></tr>
+                    <tr><td><strong>Target Peserta</strong></td><td>Anak-anak SD Tirtosari (125 anak)</td></tr>
+                    <tr><td><strong>Durasi Total</strong></td><td>2400 menit (4 pertemuan @ 600 menit)</td></tr>
+                    <tr><td><strong>Konsep</strong></td><td>Belajar logika dan algoritma tanpa menggunakan komputer/gawai</td></tr>
+                    <tr><td><strong>Metode</strong></td><td>Permainan kartu instruksi, labirin, menyusun pola, tantangan kelompok</td></tr>
+                    <tr><td><strong>Keberlanjutan</strong></td><td>Media permainan dan modul diserahkan ke sekolah/RT untuk digunakan kembali</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== TUJUAN ===== -->
+        <section class="section" id="tujuan">
+            <h2><i class="fas fa-bullseye"></i> Tujuan Program</h2>
+            <ul>
+                <li>Melatih <strong>logika</strong> dan <strong>algoritma</strong> anak-anak.</li>
+                <li>Mengembangkan kemampuan <strong>pemecahan masalah</strong> tanpa gawai.</li>
+                <li>Membiasakan anak berpikir <strong>terstruktur</strong> dan <strong>sistematis</strong>.</li>
+                <li>Menumbuhkan <strong>kerja sama tim</strong> melalui permainan kelompok.</li>
+                <li>Menyediakan media pembelajaran yang <strong>berkelanjutan</strong> untuk sekolah/RT.</li>
+            </ul>
+        </section>
+
+        <!-- ===== BAHAN ===== -->
+        <section class="section">
+            <h2><i class="fas fa-toolbox"></i> Bahan &amp; Perlengkapan</h2>
+            <div class="grid-2">
+                <div class="item"><i class="fas fa-id-card"></i> <strong>Kartu Algoritma</strong><br />Media instruksi permainan</div>
+                <div class="item"><i class="fas fa-arrow-right"></i> <strong>Kartu Arah</strong><br />Kanan, Kiri, Maju</div>
+                <div class="item"><i class="fas fa-clipboard-list"></i> <strong>Kartu Instruksi</strong><br />Perintah untuk robot</div>
+                <div class="item"><i class="fas fa-copy"></i> <strong>Kertas HVS</strong><br />Lembar kerja &amp; catatan</div>
+                <div class="item"><i class="fas fa-box"></i> <strong>Karton</strong><br />Membuat kartu &amp; papan</div>
+                <div class="item"><i class="fas fa-pen"></i> <strong>Spidol</strong><br />Menulis &amp; menggambar</div>
+                <div class="item"><i class="fas fa-cut"></i> <strong>Gunting</strong><br />Memotong kartu</div>
+                <div class="item"><i class="fas fa-paste"></i> <strong>Lem</strong><br />Menempel kartu</div>
+                <div class="item"><i class="fas fa-chalkboard"></i> <strong>Papan Tulis</strong><br />Demonstrasi &amp; penjelasan</div>
+                <div class="item"><i class="fas fa-pencil-alt"></i> <strong>Alat Tulis</strong><br />Mencatat &amp; menggambar</div>
+            </div>
+        </section>
+
+        <!-- ===== TAHAPAN ===== -->
+        <section class="section" id="pertemuan">
+            <h2><i class="fas fa-calendar-alt"></i> Tahapan Kegiatan (4 Pertemuan)</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time"><i class="fas fa-clock"></i> 600 mnt</span>
+                    <div class="desc">
+                        <strong>Pertemuan 1: Pengenalan Berpikir Komputasional</strong><br />
+                        Ice breaking &quot;Tepuk Komputer&quot; • Penjelasan konsep algoritma • Permainan &quot;Robot dan Komandan&quot; • Membuat kartu instruksi
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time"><i class="fas fa-clock"></i> 600 mnt</span>
+                    <div class="desc">
+                        <strong>Pertemuan 2: Permainan Algoritma</strong><br />
+                        Permainan papan labirin dengan kartu arah • Menyusun jalur terpendek • Diskusi strategi
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time"><i class="fas fa-clock"></i> 600 mnt</span>
+                    <div class="desc">
+                        <strong>Pertemuan 3: Tantangan Coding Unplugged</strong><br />
+                        Menyusun pola mozaik • Lomba urutan angka • Memecahkan masalah &quot;ayam, sayur, serigala&quot;
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time"><i class="fas fa-clock"></i> 600 mnt</span>
+                    <div class="desc">
+                        <strong>Pertemuan 4: Evaluasi &amp; Permainan Kelompok</strong><br />
+                        Kompetisi instruksi menggambar • Presentasi • Refleksi • Hadiah • Penyerahan modul
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MATERI ===== -->
+        <section class="section" id="materi">
+            <h2><i class="fas fa-book"></i> Materi Ajar</h2>
+
+            <h3><i class="fas fa-question-circle"></i> Apa Itu Coding Unplugged?</h3>
+            <p>Coding Unplugged adalah cara belajar tentang <strong>logika pemrograman</strong> dan <strong>algoritma</strong> tanpa menggunakan komputer, tablet, atau ponsel. Anak-anak belajar melalui permainan kartu, teka-teki, permainan peran, dan lomba kelompok.</p>
+
+            <h3><i class="fas fa-brain"></i> Apa Itu Berpikir Komputasional?</h3>
+            <p>Berpikir Komputasional adalah cara berpikir <strong>terstruktur</strong> dan <strong>sistematis</strong> untuk menyelesaikan masalah.</p>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Pilar</th><th>Penjelasan</th><th>Contoh</th></tr>
+                    <tr><td><strong>Dekomposisi</strong></td><td>Memecah masalah besar menjadi bagian kecil</td><td>Menyusun puzzle</td></tr>
+                    <tr><td><strong>Pengenalan Pola</strong></td><td>Mencari kemiripan atau pola</td><td>Pola warna 🔴🔵🔴🔵</td></tr>
+                    <tr><td><strong>Abstraksi</strong></td><td>Mengambil informasi penting saja</td><td>Membuat peta sederhana</td></tr>
+                    <tr><td><strong>Algoritma</strong></td><td>Menyusun langkah-langkah berurutan</td><td>Resep masakan</td></tr>
+                </table>
+            </div>
+
+            <h3><i class="fas fa-list-ol"></i> Apa Itu Algoritma?</h3>
+            <p><strong>Algoritma</strong> adalah urutan langkah-langkah untuk mencapai suatu tujuan.</p>
+            <div class="highlight">
+                <i class="fas fa-lightbulb"></i> <strong>Ciri-ciri Algoritma yang Baik:</strong><br />
+                <strong>Urut</strong> — langkah demi langkah &bull; <strong>Jelas</strong> — tidak membingungkan &bull; <strong>Terbatas</strong> — ada akhir/tujuan &bull; <strong>Logis</strong> — masuk akal
+            </div>
+            <p><strong>Contoh Algoritma Membuat Kopi:</strong></p>
+            <ol>
+                <li>Ambil gelas bersih</li>
+                <li>Masukkan 2 sendok kopi</li>
+                <li>Masukkan 2 sendok gula</li>
+                <li>Tuang air panas</li>
+                <li>Aduk hingga rata</li>
+                <li>Kopi siap diminum!</li>
+            </ol>
+
+            <h3><i class="fas fa-arrow-right"></i> Apa Itu Instruksi?</h3>
+            <p><strong>Instruksi</strong> adalah perintah tunggal yang diberikan kepada robot/komputer.</p>
+            <div class="table-wrap">
+                <table>
+                    <tr><th>Instruksi</th><th>Gerakan</th></tr>
+                    <tr><td><strong>Maju</strong></td><td>Melangkah 1 langkah ke depan</td></tr>
+                    <tr><td><strong>Mundur</strong></td><td>Melangkah 1 langkah ke belakang</td></tr>
+                    <tr><td><strong>Kanan</strong></td><td>Memutar badan ke kanan</td></tr>
+                    <tr><td><strong>Kiri</strong></td><td>Memutar badan ke kiri</td></tr>
+                    <tr><td><strong>Berhenti</strong></td><td>Berhenti bergerak</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== SIMBOL ===== -->
+        <section class="section" id="simbol">
+            <h2><i class="fas fa-arrows-alt"></i> Simbol Kartu Instruksi</h2>
+            <div class="symbol-grid">
+                <div class="symbol-card">
+                    <div class="simbol">➡️</div>
+                    <span class="warna" style="background:#22c55e;color:#fff;">Hijau</span>
+                    <div class="arti">Maju</div>
+                </div>
+                <div class="symbol-card">
+                    <div class="simbol">⬅️</div>
+                    <span class="warna" style="background:#ef4444;color:#fff;">Merah</span>
+                    <div class="arti">Mundur</div>
+                </div>
+                <div class="symbol-card">
+                    <div class="simbol">🔄</div>
+                    <span class="warna" style="background:#3b82f6;color:#fff;">Biru</span>
+                    <div class="arti">Belok Kanan</div>
+                </div>
+                <div class="symbol-card">
+                    <div class="simbol">🔄</div>
+                    <span class="warna" style="background:#eab308;color:#fff;">Kuning</span>
+                    <div class="arti">Belok Kiri</div>
+                </div>
+                <div class="symbol-card">
+                    <div class="simbol">⏹️</div>
+                    <span class="warna" style="background:#1e293b;color:#fff;">Hitam</span>
+                    <div class="arti">Berhenti</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== KEGIATAN ===== -->
+        <section class="section" id="kegiatan">
+            <h2><i class="fas fa-play-circle"></i> Kegiatan Pertemuan 1 (120 menit)</h2>
+
+            <h3><i class="fas fa-hand-peace"></i> Fase 1: Pembukaan &amp; Ice Breaking (20 mnt)</h3>
+            <ul>
+                <li><strong>Salam dan Perkenalan (10 mnt)</strong> — Fasilitator menyapa, memperkenalkan program &quot;Coding Unplugged&quot;.</li>
+                <li><strong>Ice Breaking: &quot;Tepuk Komputer&quot; (10 mnt)</strong> — Tepuk 1x = &quot;KOMPUTER!&quot;, 2x = &quot;PROGRAM!&quot;, 3x = &quot;JALANKAN!&quot;. Pola semakin cepat.</li>
+            </ul>
+
+            <h3><i class="fas fa-question"></i> Fase 2: Apersepsi Konsep Algoritma (15 mnt)</h3>
+            <ul>
+                <li><strong>Pertanyaan Pemicu (5 mnt)</strong> — &quot;Siapa tahu cara membuat kopi? Sebutkan langkah-langkahnya!&quot;</li>
+                <li><strong>Penjelasan Algoritma (10 mnt)</strong> — Algoritma = langkah berurutan. Contoh kopi. Demo kesalahan urutan.</li>
+            </ul>
+
+            <h3><i class="fas fa-robot"></i> Fase 3: Demonstrasi &quot;Robot &amp; Komandan&quot; (20 mnt)</h3>
+            <ul>
+                <li><strong>Aturan (5 mnt)</strong> — 1 Robot, 1 Komandan. Robot bergerak dengan perintah.</li>
+                <li><strong>Demonstrasi (10 mnt)</strong> — Instruksi benar vs salah.</li>
+                <li><strong>Kesimpulan (5 mnt)</strong> — Program harus punya tujuan &amp; instruksi urut.</li>
+            </ul>
+
+            <h3><i class="fas fa-users"></i> Fase 4: Pembagian &amp; Membuat Kartu (30 mnt)</h3>
+            <ul>
+                <li><strong>Pembagian (5 mnt)</strong> — 125 anak → 25 kelompok @5 anak.</li>
+                <li><strong>Membuat Kartu (25 mnt)</strong> — Setiap kelompok membuat 5 kartu instruksi dengan simbol &amp; warna.</li>
+            </ul>
+
+            <h3><i class="fas fa-trophy"></i> Fase 5: Tantangan &amp; Lomba (25 mnt)</h3>
+            <ul>
+                <li><strong>Tantangan &quot;Tebak Program&quot; (10 mnt)</strong> — Menebak hasil dari susunan kartu.</li>
+                <li><strong>Lomba Kelompok (15 mnt)</strong> — Menyusun program dari START ke FINISH. Kelompok tercepat menang.</li>
+            </ul>
+
+            <h3><i class="fas fa-comment"></i> Fase 6: Refleksi &amp; Penutup (10 mnt)</h3>
+            <ul>
+                <li><strong>Refleksi (5 mnt)</strong> — Apa itu algoritma? Kenapa urutan penting?</li>
+                <li><strong>Penutup (5 mnt)</strong> — Pengumuman pemenang, motivasi, doa.</li>
+            </ul>
+        </section>
+
+        <!-- ===== MANFAAT ===== -->
+        <section class="section" id="manfaat">
+            <h2><i class="fas fa-heart"></i> Manfaat Belajar Coding Unplugged</h2>
+            <div class="grid-2">
+                <div class="item"><i class="fas fa-brain"></i> <strong>Meningkatkan Daya Pikir</strong><br />Berpikir sistematis dan terstruktur</div>
+                <div class="item"><i class="fas fa-search"></i> <strong>Lebih Teliti</strong><br />Kesalahan kecil bisa membuat robot salah</div>
+                <div class="item"><i class="fas fa-handshake"></i> <strong>Kerja Sama Tim</strong><br />Bermain kelompok melatih kebersamaan</div>
+                <div class="item"><i class="fas fa-smile"></i> <strong>Menyenangkan</strong><br />Belajar sambil bermain</div>
+                <div class="item"><i class="fas fa-lightbulb"></i> <strong>Kreatif &amp; Inovatif</strong><br />Mencari berbagai cara menyelesaikan tantangan</div>
+                <div class="item"><i class="fas fa-redo"></i> <strong>Belajar dari Kegagalan</strong><br />Memperbaiki instruksi yang salah</div>
+            </div>
+        </section>
+
+    </div><!-- .container -->
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <h3><i class="fas fa-robot"></i> Coding Unplugged</h3>
+        <p>Belajar Berpikir Komputasional Tanpa Komputer • SD Tirtosari • 2026</p>
+        <div class="social">
+            <i class="fas fa-school"></i>
+            <i class="fas fa-book-open"></i>
+            <i class="fas fa-robot"></i>
+        </div>
+        <p style="margin-top:16px;font-size:0.8rem;">&copy; 2026 • Media permainan dan modul diserahkan ke sekolah/RT untuk digunakan kembali</p>
+    </footer>
+
+</body>
+</html>
